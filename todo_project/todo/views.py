@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import View
+from django.views.generic import TemplateView
 from django.http import JsonResponse
 from .models import Todo
 import json
@@ -47,3 +48,6 @@ class TodoDetailView(View):
             return JsonResponse({'message': 'Todo deleted successfully'}, status=204) # 204 No Content
         except Todo.DoesNotExist:
             return JsonResponse({'error': 'Todo not found'}, status=404)
+
+class ContactView(TemplateView):
+    template_name = "contact.html"
